@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>choate quiz bowl!</title>
+</head>
+
+<body onload="parallax()">
+    <ul class="menuBar" id="menuBar" style="top:-100px">
+        <a href="index.html">
+            <li class="active">
+                <p>home</p>
+            </li>
+        </a>
+        <a href="resources.html">
+            <li>
+                <p>resources</p>
+            </li>
+        </a>
+        <a href="mailto:jgeller20@choate.edu">
+            <li>
+                <p>help the website broke</p>
+            </li>
+        </a>
+    </ul>
+    <div class="code" id="code"> </div>
+    <div style="height: 100%; width: 100%; z-index: 12; position: fixed; background: black; opacity: 0.5;" id="code2"></div>
+
+    <h1 id="title" style="width: 80%; margin-left: 10%; top: 36%; text-align: center; z-index: 50; position: fixed; color: white; font-weight: 100; font-size: 100px; border-radius: 30px;"> choate quiz bowl! </h1>
+
+    <div class="coverer" id="adf">
+        <p style="margin: 15%; font-size: 20px; margin-bottom: 5%;" id="rickkk">
+            welcome to the website for the choate quiz bowl team. why does this website exist? who knows. you should click <a href="resources.html">here</a> and get access to some cool freakin' resources!
+        </p>
+        <br />
+
+        <!-- <iframe style="margin-top: 50px;" id="spot" src="https://open.spotify.com/embed?uri=spotify:artist:4Ws5hSoABAwvGJ4LhHwHgq" height='450' width="560" style='width:inherit;' frameborder='0' allowtransparency='true'></iframe> -->
+        <!-- <br /> -->
+
+
+    </div>
+
+
+    <script>
+        window.requestAnimationFrame = window.requestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function(f) {
+                setTimeout(f, 1000 / 60)
+            }
+
+        var code = document.getElementById('code')
+        var code2 = document.getElementById('code2')
+        var adf = document.getElementById('adf')
+        var title = document.getElementById('title')
+        var menubar = document.getElementById('menuBar')
+        var yt = document.getElementById('yt')
+        var spot = document.getElementById('spot')
+        var rickkk = document.getElementById('rickkk')
+        //            adf.style.top = "0"
+        var scrollheight = document.body.scrollHeight // height of entire document
+        var windowheight = window.innerHeight // height of browser window
+        var y = true
+        function parallax() {
+            var scrolltop = window.pageYOffset // get number of pixels document has scrolled vertically
+            var scrollamount = (scrolltop / windowheight) // get amount scrolled in percent of screen
+            code.style.top = (scrollamount * -30) + '%'
+            code2.style.top = (scrollamount * -50) + '%'
+            code2.style.opacity = (0.5 + 0.5 * scrollamount).toString()
+            adf.style.top = (1 - scrollamount)*100 + '%'
+            title.style.top = (0.72 - scrollamount)*50 + '%'
+            if ((windowheight - scrolltop) < 67) {
+                menubar.style.top = "0%";
+            } else {
+                menubar.style.top = "-66px";
+            }
+
+        }
+
+        window.addEventListener('scroll', function() { // on page scroll
+            requestAnimationFrame(parallax) // call parallax() on next available screen paint
+        }, false)
+
+        window.addEventListener('resize', function() { // on window resize
+            var scrolltop = window.pageYOffset // get number of pixels document has scrolled vertically
+            var scrollamount = (scrolltop / (scrollheight - windowheight)) * 100 // get amount scrolled (in %)
+        }, false)
+    </script>
+</body>
+
+</html>
