@@ -1,3 +1,21 @@
+@-webkit-keyframes hue {
+    0% {
+        -webkit-filter: hue-rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-filter: hue-rotate(360deg);
+        opacity: 1;
+    }
+}
+
+.club {
+    color: lightblue;
+    font-weight: 900;
+    font-style: italic;
+    -webkit-animation: hue 10s infinite linear;
+}
+
 body {
     margin: 0;
     font-family: helvetica;
